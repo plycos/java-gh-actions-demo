@@ -1,0 +1,5 @@
+quarkus:
+  application:
+    name: java-demo
+  virtual-threads:
+    enabled: true
