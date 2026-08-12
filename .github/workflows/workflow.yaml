@@ -27,7 +27,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v7
         with:
+          target: runtime
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/${{ github.repository }}:latest
+          tags: java-demo:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
