@@ -40,7 +40,7 @@ jobs:
           builder: ${{ steps.setup-buildx.outputs.name }}
           cache-dir: m2-cache
           dockerfile: Dockerfile
-          skip-extraction: ${{ steps.m2-cache.outputs.cache-hit }}
+          skip-extraction: false
 
       - name: Build and push
         uses: docker/build-push-action@v7
