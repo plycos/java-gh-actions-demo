@@ -18,3 +18,16 @@ A minimal Quarkus + Kotlin app used to demonstrate Docker multi-stage builds and
 ```shell
 docker build --target runtime -t java-demo:latest .
 ```
+
+## Running a DB with Docker Compose
+
+```shell
+# start
+docker compose up -d
+
+# stop
+docker compose down
+
+# stop and clear data
+docker compose down -v
+```
