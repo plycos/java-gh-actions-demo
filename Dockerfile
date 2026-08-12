@@ -4,12 +4,12 @@ COPY mvnw mvnw
 
 FROM toolchain AS configure
 COPY pom.xml ./
-RUN --mount=type=cache,target=/root/.m2 \
+RUN --mount=type=cache,target=/root/.m2,id=m2-cache \
     ./mvnw org.apache.maven.plugins:maven-dependency-plugin:3.11.0:go-offline
 
 FROM configure AS build
 COPY src src/
-RUN --mount=type=cache,target=/root/.m2 \
+RUN --mount=type=cache,target=/root/.m2,id=m2-cache \
     ./mvnw package -Dquarkus.package.jar.type=uber-jar
 
 FROM scratch AS output
