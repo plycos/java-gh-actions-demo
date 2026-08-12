@@ -1,4 +1,4 @@
-name: jar.yaml
+name: Artifact Workflow
 on:
   push:
     branches:
