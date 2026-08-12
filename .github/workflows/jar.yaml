@@ -61,7 +61,8 @@ jobs:
 #    needs: build
 #    if: github.event.name != 'pull_request'
 #    runs-on: [ 'self-hosted', 'linux', 'jump-box' ]
-#    container: ubuntu:22.04
+#    container:
+#       image: ubuntu:latest
 #    environment: production
 #    steps:
 #      - name: Download Artifact

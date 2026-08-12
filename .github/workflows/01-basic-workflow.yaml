@@ -1,0 +1,30 @@
+name: Basic Workflow
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: eclipse-temurin:21-jdk
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Build
+        shell: bash
+        run: |
+          ./mvnw package -Dquarkus.package.jar.type=uber-jar
+
+      - name: Standardize Output
+        run: |
+          cp target/*.jar target/app.jar
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: app
+          path: target/app.jar
