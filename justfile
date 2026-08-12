@@ -11,3 +11,6 @@ output:
 
 run port="8080":
     docker run -p {{port}}:8080 java-demo:latest
+
+run-ghcr:
+    docker run -p 8080:8080 ghcr.io/plycos/java-demo:latest
