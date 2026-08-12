@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: m2-cache
-          key: m2-cache-${{ hashFiles('pom.xml') }}
+          key: m2-cache-${{ hashFiles('Dockerfile') }}
           restore-keys: |
             m2-cache-
 
@@ -38,13 +38,8 @@ jobs:
         uses: reproducible-containers/buildkit-cache-dance@v3
         with:
           builder: ${{ steps.setup-buildx.outputs.name }}
-          cache-map: |
-            {
-              "m2-cache": {
-                "target": "/root/.m2",
-                "id": "m2-cache"
-              }
-            }
+          cache-dir: m2-cache
+          dockerfile: Dockerfile
           skip-extraction: ${{ steps.m2-cache.outputs.cache-hit }}
 
       - name: Build and push
