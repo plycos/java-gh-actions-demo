@@ -29,6 +29,6 @@ jobs:
         with:
           target: runtime
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ghcr.io/${{ github.repository }}/java-demo:latest
+          tags: ghcr.io/plycos/java-demo:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
